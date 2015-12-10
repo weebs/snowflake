@@ -64,23 +64,18 @@
 
 (when (not @stuff-setup)
   (reset! stuff-setup true)
-  (do
-    (js/alert "Setting up")
-    (set! (.-innerHTML (.-body js/document))
-          "
-<table>
-  <tr>
-    <td><canvas id='quil-div'></canvas></td>
-    <td><div id='reagent'></div></td>
-  </tr>
-</table>
-"))
+  (set! (.-innerHTML (.-body js/document))
+        "<table>
+            <tr>
+              <td><canvas id='quil-div'></canvas></td>
+              <td><div id='reagent'></div></td>
+            </tr>
+          </table>")
   (.on ipc "midi-msg"
        process-midi
        ;; (fn [e arg]
        ;;   (swap! midi-msgs conj (js->clj arg)))
        )
-  
   (js/alert "Im in ur stuffs, done setting up"))
 
 (reagent/render

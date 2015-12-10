@@ -7,15 +7,6 @@
 (def electron (js/require "electron"))
 
 (enable-console-print!)
-;;(println (.send (.-ipcMain electron) "midi-msg" "faku"))
-;;(def ipc (.-ipcMain electron))
-
-;;(electron/ipcMain.on "midi-msg" (fn [e a] (println "faku")))
-
-;;(println electron)
-;;(println (.-ipcMain electron))
-
-
 
 (def input (new midi.input))
 (def main-window (atom nil))
@@ -34,7 +25,7 @@
               (fn [dt m]
                 (println (js->clj m))
                 (.send (.-webContents @main-window) "midi-msg" m)))
-         (.send (.-webContents @main-window) "midi-msg" "fucking dolan")
+         ;;(.send (.-webContents @main-window) "midi-msg" "fucking dolan")
          (.openPort input 1)
          ))
 
