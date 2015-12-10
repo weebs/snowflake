@@ -32,7 +32,7 @@
          (println "done loading")
          (.on input "message"
               (fn [dt m]
-                (println (str m))
+                (println (js->clj m))
                 (.send (.-webContents @main-window) "midi-msg" m)))
          (.send (.-webContents @main-window) "midi-msg" "fucking dolan")
          (.openPort input 1)
